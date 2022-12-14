@@ -8,7 +8,7 @@ const getLatestTV = async (fastify) => {
         let data = []
         $('#main-wrapper > div > section:nth-child(7) > div.block_area-content.block_area-list.film_list.film_list-grid > div').find('div.flw-item').map((index, item) => {
             let tv_name = $(item).find('div.film-detail > h3 > a').text()
-            let tv_id = $(item).find('div.film-detail > h3 > a').attr('href')
+            let tv_id = $(item).find('div.film-detail > h3 > a').attr('href').replace('/', '')
             let tv_poster = $(item).find('div.film-poster > img').attr('data-src')
             let season_num = $(item).find('div.film-detail > div.fd-infor > span:nth-child(1)').text()
             let episode_num = $(item).find('div.film-detail > div.fd-infor > span:nth-child(3)').text()
