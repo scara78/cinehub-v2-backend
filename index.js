@@ -9,6 +9,8 @@ fastify.get("/api", async (request, reply) => {
       all: [
         {
           upcoming: "/api/upcoming",
+          info: "/api/info?id=",
+          stream_links: "/api/watch?id=&epid=",
         },
       ],
       movies: [
@@ -47,7 +49,10 @@ const getLatestTV = require("./routes/tv/getLatestTV");
 const getPopularTV = require("./routes/tv/getPopularTV");
 const getTopIMDBTV = require("./routes/tv/getTopIMDBTV");
 
+// Declare Misc routes
 const getUpcoming = require("./routes/all/getUpcoming");
+const getInfo = require("./routes/all/getInfo");
+const getStreamLinks = require("./routes/all/getStreamLinks");
 
 // Register Movie routes
 fastify.register(getTrendingMovies);
@@ -61,7 +66,10 @@ fastify.register(getLatestTV);
 fastify.register(getPopularTV);
 fastify.register(getTopIMDBTV);
 
+// Register Misc routes
 fastify.register(getUpcoming);
+fastify.register(getInfo);
+fastify.register(getStreamLinks);
 
 // Run the server!
 const start = async () => {
