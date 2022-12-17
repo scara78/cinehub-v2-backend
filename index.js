@@ -3,6 +3,11 @@ const fastify = require("fastify")({ logger: true, ignoreTrailingSlash: true });
 const cors = require('@fastify/cors')
 const cheerio = require("cheerio");
 
+fastify.register(cors, { 
+  origin: "*",
+  methods: ["GET"]
+})
+
 fastify.get("/api", async (request, reply) => {
   return {
     info: "Welcome to Cinehub v2 API.",
@@ -71,11 +76,6 @@ fastify.register(getTopIMDBTV);
 fastify.register(getUpcoming);
 fastify.register(getInfo);
 fastify.register(getStreamLinks);
-
-fastify.regiser(cors, { 
-  origin: "*",
-  methods: ["GET"]
-})
 
 // Run the server!
 const start = async () => {
