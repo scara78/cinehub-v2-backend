@@ -1,5 +1,6 @@
 // Require the framework and instantiate it
 const fastify = require("fastify")({ logger: true, ignoreTrailingSlash: true });
+const cors = require('@fastify/cors')
 const cheerio = require("cheerio");
 
 fastify.get("/api", async (request, reply) => {
@@ -70,6 +71,11 @@ fastify.register(getTopIMDBTV);
 fastify.register(getUpcoming);
 fastify.register(getInfo);
 fastify.register(getStreamLinks);
+
+fastify.regiser(cors, { 
+  origin: "*",
+  methods: ["GET"]
+})
 
 // Run the server!
 const start = async () => {
