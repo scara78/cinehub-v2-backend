@@ -1,12 +1,12 @@
 // Require the framework and instantiate it
 const fastify = require("fastify")({ logger: true, ignoreTrailingSlash: true });
-const cors = require('@fastify/cors')
+const cors = require("@fastify/cors");
 const cheerio = require("cheerio");
 
-fastify.register(cors, { 
+fastify.register(cors, {
   origin: "*",
-  methods: ["GET"]
-})
+  methods: ["GET"],
+});
 
 fastify.get("/api", async (request, reply) => {
   return {
@@ -17,6 +17,7 @@ fastify.get("/api", async (request, reply) => {
           upcoming: "/api/upcoming",
           info: "/api/info?id=",
           stream_links: "/api/watch?id=&epid=",
+          search: "/api/search?q=",
         },
       ],
       movies: [
@@ -59,6 +60,7 @@ const getTopIMDBTV = require("./routes/tv/getTopIMDBTV");
 const getUpcoming = require("./routes/all/getUpcoming");
 const getInfo = require("./routes/all/getInfo");
 const getStreamLinks = require("./routes/all/getStreamLinks");
+const getSearch = require("./routes/all/getSearch");
 
 // Register Movie routes
 fastify.register(getTrendingMovies);
@@ -76,6 +78,7 @@ fastify.register(getTopIMDBTV);
 fastify.register(getUpcoming);
 fastify.register(getInfo);
 fastify.register(getStreamLinks);
+fastify.register(getSearch);
 
 // Run the server!
 const start = async () => {
