@@ -17,7 +17,7 @@ const getPopularTV = async (fastify) => {
       .map((index, item) => {
         let tv_name = $(item).find("div.film-detail > h2 > a").text();
         let tv_id = $(item)
-          .find("div.film-detail > h3 > a")
+          .find("div.film-detail > h2 > a")
           .attr("href")
           .replace("/", "");
         let tv_poster = $(item).find("div.film-poster > img").attr("data-src");

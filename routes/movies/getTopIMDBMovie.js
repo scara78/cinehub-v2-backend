@@ -19,7 +19,7 @@ const getTopIMDB = async (fastify) => {
       .map((index, item) => {
         let movie_name = $(item).find("div.film-detail > h2 > a").text();
         let movie_id = $(item)
-          .find("div.film-detail > h3 > a")
+          .find("div.film-detail > h2 > a")
           .attr("href")
           .replace("/", "");
         let movie_poster = $(item)
